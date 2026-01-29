@@ -1,14 +1,20 @@
-package com.example.product;
+package com.example.inventory_management.services;
 
+import com.example.inventory_management.entities.Product;
+import com.example.inventory_management.repositories.ProductRepository;
+import com.example.inventory_management.dtos.ProductRequest;
 import org.springframework.stereotype.Service;
 import  java.util.List;
+
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
+
     public ProductService(ProductRepository productRepository){
         this.productRepository=productRepository;
     }
-    public Product createProduct( ProductRequest request){
+
+    public Product createProduct(ProductRequest request){
         Product product=new Product();
         product.setName(request.name());
         product.setPrice(request.price());
@@ -17,6 +23,7 @@ public class ProductService {
         productRepository.save(product);
         return  product;
     }
+
     public List<Product> getAllProduct(String name, String status){
         if(name !=null && status !=null){
             return  productRepository.findByNameContainingIgnoreCaseAndStatus(name,status);
@@ -29,29 +36,36 @@ public class ProductService {
         }
 
     }
+
     public Product getProduct(Integer id){
        return productRepository.findById(id).orElseThrow(()->new RuntimeException("Product not found"));
-
     }
+
     public Product updateProduct(Integer id, ProductRequest request){
         Product product=productRepository.findById(id).orElseThrow(()->new RuntimeException("Product not found"));
+
         if(request.name() != null){
             product.setName(request.name());
         }
-       if(request.price() != null) {
-           product.setPrice(request.price());
-       }
-       if (request.quantity() != null) product.setQuantity(request.quantity());
-      if(request.quantity() != null && request.quantity() ==0){
-          product.setStatus("Not available");
-      }else if (request.status() != null){
+
+        if(request.price() != null) {
+            product.setPrice(request.price());
+        }
+
+        if (request.quantity() != null){
+            product.setQuantity(request.quantity());
+        }
+
+        if(request.quantity() != null && request.quantity() ==0){
+            product.setStatus("Not available");
+        } else if (request.status() != null){
             product.setStatus(request.status());
         }
-        return productRepository.save(product);
 
-        }
-        public void deleteProduct(Integer id){
-        productRepository.deleteById(id);
-        }
+        return productRepository.save(product);
     }
 
+    public void deleteProduct(Integer id){
+        productRepository.deleteById(id);
+    }
+}

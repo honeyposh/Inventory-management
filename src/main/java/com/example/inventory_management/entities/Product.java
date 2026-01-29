@@ -1,8 +1,10 @@
-package com.example.product;
+package com.example.inventory_management.entities;
 
 import jakarta.persistence.*;
 
 import java.util.Objects;
+
+
 @Entity
 public class Product {
 

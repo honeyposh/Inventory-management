@@ -55,7 +55,7 @@ Remove a product from the inventory
 ___
 
 ## API Documentation
-The complete API documentaion,including request and response examples, is available via postman: 
+The complete API documentaion,including request and response examples, is available on postman: https://documenter.getpostman.com/view/29716797/2sBXVo87VB
 ## Database
 This project uses psql database 
 

@@ -1,19 +1,19 @@
-# INVENTORY MANAGEMENT SYSTEM
+# Inventory Management System
 A Simple RESTful API built with Spring Boot for managing products in an inventory system.
 
 ## Features
 - Create new products
 - Get all products 
 - Get a single products by ID
-- update product details and stock quantity
+- update a product details and stock quantity
 - Delete product from inventory
-- Search and filter product by name and staus
+- Search and filter product by name and status
 
 ## Tech Stack
 - Java
 - Spring Boot
 - Spring Data JPA
-- psql Database
+- PostgreSQL (psql) Database
 - Maven
 
 ## API Endpoints
@@ -25,7 +25,7 @@ ___
 
 ### Get All Products
 **GET** `/api/products` 
-Retrieves all product
+Retrieves all products
 
 This end point supports optional query parameter for searching and filtering
 
@@ -45,19 +45,19 @@ ___
 
 ### Update Product
 **PATCH** `/api/products/{id}`
-Updtae a product details and stock quantity
+Updates product details and stock quantity
 
 ___ 
 ### Delete Product
 **DELETE** `/api/products/{id}`
-Remove a product from the inventory
+Remove product from the inventory
 
 ___
 
 ## API Documentation
 The complete API documentaion,including request and response examples, is available on postman: https://documenter.getpostman.com/view/29716797/2sBXVo87VB
 ## Database
-This project uses psql database 
+This project uses **PostgreSQL (psql) database**
 
 ## How to Run
 
